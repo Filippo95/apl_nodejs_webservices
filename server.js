@@ -71,7 +71,17 @@ app.get('/seminari',(req,res)=>{
   })
 
 });
+app.get('/cat_libri',(req,res)=>{
+  res.status(200);
+   con.query('Select * from cat_libris', function (err, result) {
+    if (err) 
+    throw err;
+    
+  res.setHeader('Access-Control-Allow-Origin', 'http://isaplomb.org')
+  res.send(result)
+  })
 
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Server in ascolto alla porta ${PORT}`);
